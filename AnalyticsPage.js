@@ -1,3 +1,4 @@
+const logger = require('./logger');
 class AnalyticsPage {
         constructor(selenium) {
             this.selenium = selenium
@@ -24,17 +25,17 @@ class AnalyticsPage {
                 await this.selenium.clickElement("className" , "color-btn")  
             }
             else{
-                console.log("there is Problem with recognize the correct Color")
+                logger.warn("there is Problem with recognize the correct Color")
             }
     
             let newcolor = await this.selenium.isElementExists("xpath", "//div[@style='color: rgba(16, 68, 24, 0.965);']")
     
             if (newcolor) {
-                console.log("this is correct color - green")
+                logger.info("this is correct color - green")
                 
             }
             else{
-                console.log("there is Problem with recognize the correct Color - green")
+                logger.warn("there is Problem with recognize the correct Color - green")
             }
 
 

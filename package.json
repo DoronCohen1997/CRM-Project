@@ -4,8 +4,11 @@
   "description": "",
   "main": "BasePage.js",
   "dependencies": {
+    "app-root-path": "^2.2.1",
     "chromedriver": "^77.0.0",
-    "selenium-webdriver": "^4.0.0-alpha.5"
+    "selenium-webdriver": "^4.0.0-alpha.5",
+    "winston": "^3.2.1",
+    "winston-daily-rotate-file": "^4.2.1"
   },
   "devDependencies": {},
   "scripts": {
@@ -14,3 +17,5 @@
   "author": "",
   "license": "ISC"
 }
+
+

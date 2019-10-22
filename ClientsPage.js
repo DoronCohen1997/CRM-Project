@@ -1,3 +1,4 @@
+const logger = require('./logger');
 class ClientsPage {
         constructor(selenium) {
             this.selenium = selenium
@@ -31,7 +32,7 @@ class ClientsPage {
 
                     if (noEmailType == "A") {
                         counterA++
-                        console.log(counterA)
+                        logger.info(counterA)
 
                     }
         
@@ -72,7 +73,7 @@ class ClientsPage {
 
                     if (noEmailType == "B") {
                         counterB++
-                        console.log(counterB)
+                        logger.info(counterB)
 
                     }
         
@@ -113,7 +114,7 @@ class ClientsPage {
 
                     if (noEmailType == "C") {
                         counterC++
-                        console.log(counterC)
+                        logger.info(counterC)
 
                     }
         
@@ -154,7 +155,7 @@ class ClientsPage {
 
                     if (noEmailType == "D") {
                         counterD++
-                        console.log(counterD)
+                        logger.info(counterD)
 
                     }
         
@@ -191,10 +192,10 @@ class ClientsPage {
 
 
           if ((result1 === newinput1) && (result2 === newinput2)) {
-            console.log("Validation good")
+            logger.info("Validation good -- Client Name Update Succssfuly")
             }
             else{
-            console.log("Validation wrong")
+            logger.warn("Validation wrong -- Client Name Not Update Succssfuly")
             }
 
         }
@@ -215,10 +216,10 @@ class ClientsPage {
        
             
         if ((result1 === newinput1) && (result2 === newinput2) && (result4 === input4)) {
-            console.log("Validation good")
+            logger.info("Validation good -- Email Type Update Successfuly")
         }
          else{
-             console.log("Validation wrong")
+             logger.warn("Validation wrong -- Email Type not Update Successfuly")
          }
 
 
@@ -239,10 +240,10 @@ class ClientsPage {
        
             
         if ((result1 === newinput1) && (result2 === newinput2) && (result3 === input3)) {
-            console.log("Validation good")
+            logger.info("Validation good -- Update Owner Successfuly")
         }
          else{
-             console.log("Validation wrong")
+             logger.warn("Validation wrong -- Update Owner Fail")
          }
 
 
@@ -257,10 +258,10 @@ class ClientsPage {
             await this.selenium.clickElement("css", "#root > div > div.clients-component > div.details-pop-up-container > div > div.update-pop-up-btn > input.delete-client-popup-btn")
             let updateMsg = await this.selenium.findElementBy("css", 'div[class*="pop-up"]')
             if(updateMsg){
-                console.log("the user deleted successfully")
+                logger.info("the user deleted successfully")
             }
             else{
-                console.log("the user cant deleted")
+                logger.warn("the user cant deleted")
             }
            console.log(await updateMsg.getText())
             setTimeout(()=>{
@@ -277,10 +278,10 @@ class ClientsPage {
             await this.selenium.clickElement("css", "#root > div > div.clients-component > div.details-pop-up-container > div > div.update-pop-up-btn > input.update-client-popup-btn")
             let updateMsg = await this.selenium.findElementBy("css", 'div[class*="pop-up"]')
             if(updateMsg){
-                console.log("the user update successfully")
+                logger.info("the user update successfully")
             }
             else{
-                console.log("The User Cant Update")
+                logger.warn("The User Cant Update")
             }
            console.log(await updateMsg.getText())
             setTimeout(()=>{
@@ -295,14 +296,20 @@ class ClientsPage {
             await this.selenium.clickElement("css", "#root > div > div.clients-component > table > tr.clientDetails")
             let closebtn = await this.selenium.isElementExists("css" , "#root > div > div.clients-component > div.details-pop-up-container > div > div.update-pop-up-btn > input.cancel-client-popup-btn")
             if (closebtn) {
-                console.log("Close Button Exist and i want to check if he disappear when i press on him")
+                logger.info("Close Button Exist and i want to check if he disappear when i press on him")
                 
             }
             else{
-                console.log("Close Button Not Exist");
+                logger.warn("Close Button Not Exist");
             }
             await this.selenium.clickElement("css" , "#root > div > div.clients-component > div.details-pop-up-container > div > div.update-pop-up-btn > input.cancel-client-popup-btn")
-  
+            let window = await this.selenium.isElementExists("xpath" , "/html/body/div/div/div[4]/div[4]/div")
+            if (window) {
+                logger.info("Close Button Exist -- Test Fail")
+            }
+            else{
+                logger.warn("Close Button Not Exist -- Test Pass");
+            }
         }
 
 
@@ -311,14 +318,14 @@ class ClientsPage {
             await this.selenium.getTextFromElement("css", "#root > div > div.clients-component > div.page-numbers > span:nth-child(2)")
             await this.selenium.clickElement("css", "#root > div > div.clients-component > div.page-numbers > img:nth-child(5)")
            let text = await this.selenium.getTextFromElement("css", "#root > div > div.clients-component > div.page-numbers > span:nth-child(2)")
-           console.log(text)
+           logger.info(text)
         }
 
         async clickLeftArrow(){
             await this.selenium.getTextFromElement("css", "#root > div > div.clients-component > div.page-numbers > span:nth-child(2)")
             await this.selenium.clickElement("css", "#root > div > div.clients-component > div.page-numbers > img:nth-child(1)")
            let text = await this.selenium.getTextFromElement("css", "#root > div > div.clients-component > div.page-numbers > span:nth-child(2)")
-           console.log(text)
+           logger.info(text)
         }
         
         
@@ -337,10 +344,10 @@ class ClientsPage {
        
             
         if ((result1 === newinput1) && (result2 === newinput2) && (result3 === "YES")) {
-            console.log("Validation good")
+            logger.info("Validation good -- Sold Parameter Update Successfuly")
         }
          else{
-             console.log("Validation wrong")
+             logger.warn("Validation wrong -- Sold Parameter not Update Successfuly")
          }
 
 
@@ -365,7 +372,7 @@ class ClientsPage {
 
                     if (noSold == "NO") {
                         counter++
-                        console.log(counter)
+                        logger.info(counter)
 
                         
                     }

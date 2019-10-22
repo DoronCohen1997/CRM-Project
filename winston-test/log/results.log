@@ -1,0 +1,11 @@
+2019-10-22 14:16:44 info: Hello world
+2019-10-22 14:16:44 warn: Warning message
+2019-10-22 14:16:44 debug: Debugging info
+2019-10-22 14:17:02 info: Hello world
+2019-10-22 14:17:02 warn: Warning message
+2019-10-22 14:17:02 debug: Debugging info
+{"message":"Hello world","level":"info","timestamp":"2019-10-22 14:17:33"}
+{"message":"Warning message","level":"warn","timestamp":"2019-10-22 14:17:33"}
+{"message":"Debugging info","level":"debug","timestamp":"2019-10-22 14:17:33"}
+2019-10-22 14:48:33 info [index2.js]: Hello world
+2019-10-22 14:48:33 debug [index2.js]: Debugging info

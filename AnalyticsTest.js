@@ -2,6 +2,8 @@ const BasePage = require("./BasePage");
 const AnalyticsPage = require("./AnalyticsPage");
 const ClientsPage = require("./ClientsPage");
 const ActionsPage = require("./ActionsPage");
+const logger = require('./logger');
+
 
 
 class AnalyticsTest {
@@ -43,7 +45,7 @@ class AnalyticsTest {
         let result5 = await this.clientsPage.searchAndcountClientEmailTypeD("A" , "B" , "C" , "D" , "Email Type");
 
         let totalResultMail= result5 + result4 + result3 + result2;
-        console.log(totalResultMail);
+        logger.info(totalResultMail);
 
         await this.actionsPage.navigateToActionsPage();
 
@@ -55,17 +57,17 @@ class AnalyticsTest {
 
         let result6 = await this.analyticsPage.emailCounter();
 
-        console.log(result6);
+        logger.info(result6);
 
         let totalResult= result6 - totalResultMail;
 
         if (totalResult == 1) {
 
-            console.log("Analytics Emails Send Param work good")
+            logger.info("Analytics Emails Send Param work good")
             
         }
          else{
-            console.log("Analytics Emails Send Param not work as Expected")
+            logger.warn("Analytics Emails Send Param not work as Expected")
          }
 
     }
@@ -90,17 +92,17 @@ class AnalyticsTest {
       
         let result5 = await this.analyticsPage.checkOutstandingClientsParam();
 
-        console.log(result5);
+        logger.info(result5);
 
         let totalResult= result5 - result4;
 
         if (totalResult == 1) {
 
-            console.log("Analytics Outstanding Clients Param work good")
+            logger.info("Analytics Outstanding Clients Param work good")
             
         }
          else{
-            console.log("Analytics Outstanding Clients Param not work as Expected")
+            logger.warn("Analytics Outstanding Clients Param not work as Expected")
          }
 
     }
@@ -108,9 +110,11 @@ class AnalyticsTest {
     
 let analyticsTest = new AnalyticsTest();
 //analyticsTest.changeColorTest();
-//analyticsTest.UpdateAndCheckEmailsParam("doron" , "cohen" , "Poland" , "Beer-sheva" , "tami444@gmail.com");
-analyticsTest.UpdateAndCheckOutstandingClientsParam("doron" , "cohen", "Poland" , "Beer-Sheva", "tami444@gmail.com");
-
+//logger.warn("this is Test that Verify that color is Change after Press on Color Button")
+analyticsTest.UpdateAndCheckEmailsParam("doron" , "cohen" , "Poland" , "Beer-sheva" , "tami444@gmail.com");
+logger.warn("this is Test to check Analytics emails Param")
+//analyticsTest.UpdateAndCheckOutstandingClientsParam("doron" , "cohen", "Poland" , "Beer-Sheva", "tami444@gmail.com");
+//logger.warn("this is Test to check Analytics Outstanding Clients Param")
 
 
 

@@ -1,3 +1,4 @@
+const logger = require('./logger');
 class ActionsPage {
         constructor(selenium) {
             this.selenium = selenium
@@ -168,7 +169,7 @@ class ActionsPage {
             await this.selenium.clickElement("xpath" , "/html/body/div/div/div[4]/div[1]/table/table/tr[3]/th[2]/input");
             let updateMsg = await this.selenium.findElementBy("css", 'div[class*="pop-up"]')
             if(updateMsg){
-                console.log("the user update successfully")
+                logger.info("the user update successfully")
             }
            console.log(await updateMsg.getText())
             setTimeout(()=>{

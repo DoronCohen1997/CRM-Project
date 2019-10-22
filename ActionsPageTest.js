@@ -1,6 +1,8 @@
 const BasePage = require("./BasePage");
 const ActionsPage = require("./ActionsPage");
 const ClientsPage = require("./ClientsPage");
+const logger = require('./logger');
+
 
 
 class ActionsPageTest {
@@ -47,13 +49,18 @@ class ActionsPageTest {
                 await this.clientsPage.searchAndValidatesold(input1,input2);
         
             }
-
+            //on this Test i want to check the result after insert specific input & searchby specific Criteria.
             async searchByCountryAndValidate(input,searchBy){
                 await this.clientsPage.navigateToClientsPage();
                 let clientDetails7 = await this.actionsPage.searchAndValidateClient(input,searchBy);
                 console.table(clientDetails7);
+                if (clientDetails7.length == 0) {
+                    logger.info("there is No result By Criteria")
+                }
+                else{
+                    logger.info("there is result By Criteria")
+                }
 
-            // print table with all detaild of input & searchby :
 
             
         
@@ -64,13 +71,18 @@ class ActionsPageTest {
 }
     
 let actionsPageTest = new ActionsPageTest();
-//actionsPageTest.addnewclientandvalidation("doron" , "cohen", "Israel" , "dimona", "tamidoron97@gmail.com");
+//actionsPageTest.addnewclientandvalidation("Yoram" , "Levi", "soria" , "Yaffo", "tamidoron97@gmail.com");// this is positive test
+//logger.warn("this is add new Client Test");
 //actionsPageTest.updateclientownerTest("dafna" , "cohen" , "Hull Conrad", "A"); // this is positive test
+//logger.warn("this is Update Owner Test")
 //actionsPageTest.updateclientownerTest("$$$$$" , "&&&&" , "@@@@@" , "*****") // this is negative test
 //actionsPageTest.updateemailtypeTest("dafna" , "cohen" , "Shepherd Stone", "C"); // this is positive test
+//logger.warn("this is Update EMail Type Test")
 //actionsPageTest.updateemailtypeTest("$$$$$" , "@@@@@" , "!!!!!!" , "******") // this is Negative test
 //actionsPageTest.updateSoldParameter("dafna" , "cohen" , "Barton Ramirez" , "D") // this is positive test
+//logger.warn("This is Update Sold Parameter Test")
 //actionsPageTest.updateSoldParameter("%%%%%" , "%%%%%%" , "$$$$" , "*******") // this is Negative Test.
 actionsPageTest.searchByCountryAndValidate("france" ,"country") // this is positive Test
+logger.warn("this is search and Validate test by Criteria")
 //actionsPageTest.searchByCountryAndValidate("Liberia" ,"country");//this is Negative Test
 
