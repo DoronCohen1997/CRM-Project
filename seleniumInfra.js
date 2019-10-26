@@ -1,3 +1,4 @@
+const logger = require('./logger');
 const {Builder, By, Key , until} = require('selenium-webdriver');
 const path = require('chromedriver').path;
 const chrome = require('selenium-webdriver/chrome');
@@ -65,10 +66,10 @@ class SelenuimInfra{
                 }
             }
             await element.sendKeys(data)
-            console.log(`Send Keys to element with ${locatorType} = ${locatorValue} `)
+            logger.debug(`Send Keys to element with ${locatorType} = ${locatorValue} `)
         }
         catch (error) {
-            console.error(`Got error while trying to send keys to element with ${locatorType} = ${locatorValue}`)
+            logger.debug(`Got error while trying to send keys to element with ${locatorType} = ${locatorValue}`)
         }
     }
 
@@ -155,6 +156,14 @@ class SelenuimInfra{
         catch{
             console.error(`Got error while trying to find element with ${locatorType} = ${locatorValue}`)
         }
+    }
+
+    async sleepFunction(num) {
+        await this.driver.sleep(num)
+    }
+
+    async getAlert(){
+        await this.driver.switchTo().alert.getText();
     }
 
 }

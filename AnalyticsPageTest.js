@@ -103,10 +103,10 @@ class AnalyticsTest {
 let analyticsTest = new AnalyticsTest();
 //analyticsTest.changeColorTest();
 //logger.warn("this is Test that Verify that color is Change after Press on Color Button")
-analyticsTest.UpdateAndCheckEmailsParam("sason", "cohen", "Poland", "Beer-sheva", "tami444@gmail.com");
-logger.warn("this is Test to check Analytics emails Param")
-//analyticsTest.UpdateAndCheckOutstandingClientsParam("yael" , "cohen", "lod" , "Beer-Sheva", "tami440000@gmail.com");
-//logger.warn("this is Test to check Analytics Outstanding Clients Param")
+//analyticsTest.UpdateAndCheckEmailsParam("Esti", "cohen", "Poland", "Beer-sheva", "tami444@gmail.com");
+//logger.warn("this is Test to check Analytics emails Param")
+analyticsTest.UpdateAndCheckOutstandingClientsParam("Moran" , "cohen", "lod" , "Beer-Sheva", "tami440000@gmail.com");
+logger.warn("this is Test to check Analytics Outstanding Clients Param")
 
 
 
